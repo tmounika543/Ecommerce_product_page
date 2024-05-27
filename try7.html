@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Single E-commerce Product Page</title>
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');  
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #4b4b4b;
+            padding: 10px 20px;
+            color: white;
+            margin-top: 10px;
+        }
+        .navbar h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+        .content-container {
+            display: flex;
+            margin-top: 20px;
+            margin-left: 230px;
+            padding: 20px;
+        }
+        .card-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .card {
+            border: 1px solid black;
+            border-style: hidden;
+            background-color: #efefef;
+            width: 490px;
+            height: 470px;
+            text-align: center;
+            padding-top: 10px;
+            padding-bottom: 3px;
+            position: relative;
+        }
+        .nrml {
+            width: 490px;
+            height: 150px;
+            display: flex;
+            justify-content: center;
+        }
+        .thumb {
+            cursor: pointer;
+            border: 1px solid black;
+            border-style: hidden;
+            background-color: #edececf0;
+            padding: 5px;
+            width: 90px;
+            height: 80px;
+            margin-top: 20px;
+            text-align: center;
+            margin-left: 5px;
+        }
+        .radio-buttons {
+            position: absolute;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .product{
+            margin-top: -30px;
+            margin-left:30px;
+            width:530px;
+        }
+        .product-title{
+            margin-top: 10px;
+        }
+        .product-title h2{
+            font-size: 32px;
+            font-weight: 700;
+            line-height: 2.4rem;
+            letter-spacing: -0.02rem;
+        }
+        .product-rating{
+            display: flex;
+            margin-top: 4px;
+            margin-bottom: 10px;
+            align-items: center;
+            color: #ffc600;
+        }
+        .product-price{
+            display: flex;
+            position: relative;
+            margin: 10px 0;
+            align-items: center;
+        }
+        .product-price .offer-price{
+            font-size: 48px;
+            font-weight: 700;
+        }
+        .product-price .sale-price{
+            font-size: 22px;
+            font-weight: 500;
+            text-decoration: line-through;
+            color: var(--grey);
+            margin-left: 12px;
+        }
+        .product-details{
+            margin: 10px 0;
+        }
+        .product-size{
+            margin: 10px 0;
+        }
+        .product-size h4{
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+        .size-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        .size-buttons .button {
+            padding: 10px 24px;
+            font-size: 16px;
+            font-weight: 500;
+            color: white;
+            background-color: #4b4b4b;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .size-buttons .button:hover {
+            background-color: #333333;
+        }
+        .product-color{
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+        }
+        .product-color h4{
+            font-size: 16px;
+            font-weight: 500;
+            margin-right: 20px;
+        }
+        .product-color .color-layout{
+            margin: 5px 0;
+            display: flex;
+            gap: 10px;
+        }
+        .product-color .color-layout label{
+            border-radius: 4px;
+            cursor: pointer;
+            content: '';
+            width: 40px;
+            height: 40px;
+            display: inline-block;
+        }
+        .product-color .color-layout .black{
+            background-color: black;
+        }
+        .product-color .color-layout .white{
+            background-color:rgba(163, 162, 162, 0.553);
+        }
+        .product-color .color-layout .lightpink{
+            background-color:lightpink;
+        }
+        .product-color .color-layout input[type="radio"]:checked + label{
+            box-shadow: 0 3px 6px var(--shadow);
+        }
+        .product-color .color-layout .color-input{
+            display: none;
+        }
+        .product-btn-group{
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-left: 30px; 
+        }
+        .product-btn-group .button{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            padding: 10px 24px;
+            font-size: 16px;
+            font-weight: 500;
+            color: white;
+            background-color: #4b4b4b;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .product-btn-group .button:hover{
+            background-color: #333333;
+        }
+        @media(max-width: 1024px) {
+            .content-container {
+                flex-direction: column;
+                align-items: center;
+                margin: 0;
+                padding: 10px;
+            }
+            .product {
+                width: 100%;
+                margin: 0;
+                padding: 0 10px;
+            }
+            .card {
+                width: 100%;
+                height: auto;
+            }
+            .nrml {
+                width: 100%;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .thumb {
+                width: 70px;
+                height: 80px;margin:0 10px 0 0;
+                
+            }
+            .radio-buttons {
+                position:-webkit-sticky;
+                flex-direction: column;
+                margin-top: 1px;
+                right: 5px;
+                padding-bottom: 150px;
+            }
+        }
+        @media (max-width: 768px) {
+            .navbar h1 {
+                font-size: 20px;
+            }
+            .navbar a {
+                margin-left: 10px;
+            }
+            .content-container {
+                margin: 0;
+                padding: 5px;
+            }
+            .product-title h2 {
+                font-size: 24px;
+            }
+            .product-price .offer-price {
+                font-size: 32px;
+            }
+            .product-price .sale-price {
+                font-size: 18px;
+            }
+            .product-size h4, .product-color h4 {
+                font-size: 14px;
+            }
+            .size-buttons .button, .product-btn-group .button {
+                font-size: 14px;
+                padding: 8px 16px;
+            }
+        }
+        @media (max-width: 480px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .navbar h1 {
+                font-size: 18px;
+                margin-bottom: 10px;
+            }
+            .navbar a {
+                margin: 5px 0;
+                font-size: 14px;
+            }
+            .product-title h2 {
+                font-size: 20px;
+            }
+            .product-price .offer-price {
+                font-size: 24px;
+            }
+            .product-price .sale-price {
+                font-size: 16px;
+            }
+            .product-size h4, .product-color h4 {
+                font-size: 12px;
+            }
+            .size-buttons .button, .product-btn-group .button {
+                font-size: 12px;
+                padding: 6px 12px;
+            }
+            .thumb {
+                width: 67.6px;
+                height: 80px;
+                padding-left: 1px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <h1>Smart Watch</h1>
+        <div>
+            <a href="#">Collections</a>
+            <a href="#">Apple Products</a>
+            <a href="#"><u>Apple Watches</u></a>
+            <a href="#">Contact</a>
+            <a href="#">About</a>
+        </div>
+    </div>
+    <div class="content-container">
+        <div class="card-container">
+            <div class="card">
+                <img src="img/b.jpg" alt="" width="390px" height="460px" id="product-main-image">
+                <div class="nrml">   
+                    <div class="thumb">
+                        <img src="img/b.jpg" alt="" width="80px" height="80px" class="image-list">
+                    </div>
+                    <div class="thumb">
+                        <img src="img/wh.jpg" alt="" width="80px" height="80px" class="image-list">
+                    </div>
+                    <div class="thumb">
+                        <img src="img/p.jpg" alt="" width="80px" height="80px" class="image-list">
+                    </div>
+                    <div class="thumb">
+                        <img src="img/grp.png" alt="" width="80px" height="80px" class="image-list">
+                    </div>
+                    <div class="thumb">
+                        <img src="img/grp1.png" alt="" width="80px" height="80px" class="image-list">
+                    </div>
+                </div>
+                <div class="radio-buttons">
+                    <input type="radio" name="slider" value="img/b.jpg" id="radio1" checked>
+                    <input type="radio" name="slider" value="img/b2.png" id="radio2">
+                    <input type="radio" name="slider" value="img/b3.png" id="radio3">
+                    <input type="radio" name="slider" value="img/p2.png" id="radio4">
+                    <input type="radio" name="slider" value="img/grp2.png" id="radio5">
+                </div>
+            </div>
+        </div>
+        <div class="product">
+            <div class="product-title">
+                <h2>Apple Watch SE (2nd Gen) [GPS + Cellular 40 mm]</h2>
+            </div>
+            <div class="product-rating">
+                <span><i class="bx bxs-star"></i></span>
+                <span><i class="bx bxs-star"></i></span>
+                <span><i class="bx bxs-star"></i></span>
+                <span><i class="bx bxs-star"></i></span>
+                <span><i class="bx bxs-star"></i></span>
+            </div>
+            <div class="product-price">
+                <span class="offer-price">₹34,899</span>
+                <span class="sale-price">₹36,000</span>
+            </div>
+            <div class="product-details">
+                <h3>Description</h3>
+                <p>Smart Watch w/Midnight Aluminium Case & Midnight Sport Band. 
+                Fitness & Sleep Tracker, Crash Detection, Heart Rate Monitor, Retina Display, Water Resistant</p>
+            </div>
+            <div class="product-size">
+                <h4>Size</h4>
+                <div class="size-buttons">
+                    <button class="button">40mm</button>
+                    <button class="button">44mm</button>
+                </div>
+            </div>
+            <div class="product-color">
+                <h4>Color</h4>
+                <div class="color-layout">
+                    <input type="radio" name="color" value="black" class="color-input">
+                    <label for="black" class="black"></label>
+                    <input type="radio" name="color" value="white" class="color-input">
+                    <label for="white" class="white"></label>
+                    <input type="radio" name="color" value="lightpink" class="color-input">
+                    <label for="lightpink" class="lightpink"></label>
+                </div>
+            </div>
+            <div class="product-btn-group">
+                <div class="button buy-now"><i class='bx bxs-zap'></i> Buy Now</div>
+                <div class="button add-cart"><i class='bx bxs-cart'></i> Add to Cart</div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const sliderMainImage = document.getElementById("product-main-image");
+        const sliderImageList = document.getElementsByClassName("image-list");
+        const radioButtons = document.querySelectorAll('.radio-buttons input[type="radio"]');
+
+        for (let i = 0; i < sliderImageList.length; i++) {
+            sliderImageList[i].onclick = function() {
+                sliderMainImage.src = sliderImageList[i].src;
+                console.log(sliderMainImage.src);
+            }
+        }
+
+        radioButtons.forEach((radio, index) => {
+            radio.onclick = function() {
+                sliderMainImage.src = radio.value;
+                console.log(sliderMainImage.src);
+            }
+        });
+    </script>
+</body>
+</html>
