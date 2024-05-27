@@ -1,4 +1,6 @@
-ECOMMERCE PRODUCT PAGE
+                                             ECOMMERCE PRODUCT PAGE
+
+
 ![Screenshot (138)](https://github.com/tmounika543/Ecommerce_product_page/assets/166041902/30b7a632-fa8f-4e86-b6f4-68cc673a4662)
 
 ![Screenshot (139)](https://github.com/tmounika543/Ecommerce_product_page/assets/166041902/241d4c2b-dba7-4d01-a0cb-9da6cc631c16)
