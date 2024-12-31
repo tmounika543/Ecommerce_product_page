@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 10px;
+}
+
+.navbar h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.navbar a {
+    color: black;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.navbar a:hover {
+    color: blue;
+}
+
+.content-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 20px;
+}
+
+.card-container {
+    margin-right: 20px;
+}
+
+.card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 400px;
+}
+
+.thumb {
+    margin-top: 10px;
+}
+
+.thumb img {
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.product {
+    max-width: 400px;
+}
+
+.product-title h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.product-rating {
+    display: flex;
+    align-items: center;
+}
+
+.product-rating span {
+    color: gold;
+    margin-right: 5px;
+}
+
+.product-price {
+    margin-top: 10px;
+}
+
+.product-price .offer-price {
+    color: red;
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+.product-price .sale-price {
+    text-decoration: line-through;
+    color: gray;
+}
+
+.product-details {
+    margin-top: 10px;
+}
+
+.product-size h4, .product-color h4 {
+    margin-top: 20px;
+}
+
+.size-buttons .button {
+    margin-right: 10px;
+    padding: 5px 10px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.color-layout {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.color-input {
+    margin-right: 5px;
+}
+
+.color-input + label {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.black {
+    background-color: black;
+}
+
+.white {
+    background-color: white;
+    border: 1px solid black;
+}
+
+.lightpink {
+    background-color: lightpink;
+}
+
+.product-btn-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: blue;
+    color: white;
+}
+
+.buy-now {
+    background-color: green;
+}
+
+.add-cart {
+    background-color: orange;
+}
